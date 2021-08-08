@@ -22,22 +22,22 @@ public class EmployeeRepository {
     }
 
     public static Connection getConnection() {
-
         Connection connection = null;
-        String url = "jdbc:postgresql://localhost:5432/employee";
-        String user = "postgres";
+        String url = "jdbc:mysql://localhost:3306/employee";
+        String user = "root";
         String password = "7890";
 
         try {
             connection = DriverManager.getConnection(url, user, password);
             if (connection != null) {
-                System.out.println("Connected to the PostgreSQL server successfully.");
+                System.out.println("Connected to the MySQL server successfully.");
             } else {
                 System.out.println("Failed to make connection!");
             }
-        } catch (SQLException sqlException) {
-            System.out.println(sqlException);
+        } catch (SQLException e) {
+            getSQLExceptionInfo(e);
         }
+
         return connection;
     }
 
